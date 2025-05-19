@@ -9,7 +9,12 @@ class DataLoader:
         # Dynamically inject dataset name into path
         self.config['data_path'] = self.config['data_path'].format(dataset_name=dataset_name)
 
-        self.df = pd.read_csv(self.config['data_path'])
+        # Try with 'latin1' encoding
+        try:
+            self.df = pd.read_csv(self.config['data_path'], encoding='latin1')
+        except UnicodeDecodeError:
+            # If 'latin1' fails, try 'cp1252'
+            self.df = pd.read_csv(self.config['data_path'], encoding='cp1252')
 
         self._clean_data_numerics()
         self._build_stringified_fields()
@@ -41,3 +46,5 @@ class DataLoader:
 
     def get_full_df(self):
         return self.df
+
+

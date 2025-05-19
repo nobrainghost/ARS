@@ -1,0 +1,25 @@
+#Planning to update this to allow dynamic loading of datasets (Currently configured for my specific dataset)
+data path:/assets/{dataset_name}
+
+Key_Fields:
+- Manufacturer
+- Model Name
+- Category
+- Screen Size
+- Screen
+- CPU
+- RAM
+- Storage
+- GPU
+- Operating System
+- Operating System Version
+- Weight
+- Price (Euros)
+
+numeric_fields:
+  - Price (Euros)
+  - Screen Size
+  - Weight
+
+output_field: description
+id_field: Model Name

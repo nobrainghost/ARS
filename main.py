@@ -15,7 +15,7 @@ DataLoader = loader.DataLoader()
 
 data = DataLoader.get_data()
 test_data = data.head(5)
-for index, row in test_data.iterrows():
+for index, row in data.iterrows():
     def gen_product(description_string):
         description_parts = description_string.split(", ")
         product=None

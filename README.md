@@ -1,6 +1,6 @@
 # Abstract Recommender System
 
-This project implements an abstract recommender system designed to interpret natural language search queries and return relevant recommendations. For example, if you ask _“A lightweight laptop with powerful graphics for Android Studio development under 500,”_ it will understand the key requirements and deliver tailored laptop suggestions that actually fit the bill.
+This project implements an abstract recommender system designed to interpret natural language search queries and return relevant recommendations. For example, if you ask _“A lightweight laptop with powerful graphics for Android Studio development under 500,”_ it will understand the key requirements and deliver tailored laptop suggestions that actually fit the bill and specs (Ram/GPU/CPU).
 
 Built with modularity in mind, the system uses NLP embeddings and a FastAPI backend, allowing easy integration with any dataset by simply updating the configuration.
 

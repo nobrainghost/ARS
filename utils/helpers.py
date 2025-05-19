@@ -44,8 +44,17 @@ def pinecone_embed(product, text_to_embed, original_description_metadata, api_ke
                 "input_type": "passage"
             }
         )
+        print(f"Embedding response: {embedding_response}")
         if embedding_response.data and len(embedding_response.data) > 0:
-            vector_values = embedding_response.data[0].embedding
+            # Check if the actual embedding data (the list of floats) is present
+            if hasattr(embedding_response.data[0], 'values') and embedding_response.data[0].values is not None:
+                vector_values = embedding_response.data[0].values # Changed .embedding to .values
+            # Fallback or alternative check if structure is dict-like from print
+            elif isinstance(embedding_response.data[0], dict) and 'values' in embedding_response.data[0] and embedding_response.data[0]['values'] is not None:
+                vector_values = embedding_response.data[0]['values']
+            else:
+                print(f"Error: Embedding vector not found or is None in response for product ID {product}.")
+                return 
         else:
             print(f"Error: No embedding data returned for product ID {product}.")
             return 
